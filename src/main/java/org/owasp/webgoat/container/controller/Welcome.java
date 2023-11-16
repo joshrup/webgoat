@@ -54,7 +54,7 @@ public class Welcome {
    */
   @GetMapping(path = {"welcome.mvc"})
   public ModelAndView welcome(HttpServletRequest request) {
-
+    String test = "test";
     // set the welcome attribute
     // this is so the attack servlet does not also
     // send them to the welcome page
