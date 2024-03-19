@@ -1,0 +1,27 @@
+version: 0.2
+
+env:
+  shell: bash
+  variables:
+    MEND_URL: "https://saas.mend.io"
+  secrets-manager: # for more information: https://aws.amazon.com/about-aws/whats-new/2019/11/aws-codebuild-adds-support-for-aws-secrets-manager/
+    MEND_EMAIL: "SecretName:Value"
+    MEND_USER_KEY: "SecretName:Value"
+
+
+phases:
+  pre_build:
+    commands:
+      - curl https://downloads.mend.io/cli/linux_amd64/mend -o ./mend && chmod +x ./mend
+  build:
+    commands:
+        # The scan should be called AFTER a package manager build step such as "mvn clean install -DskipTests=true" or "npm install --only=prod"
+       - mvn clean install -DskipTests=true
+  post_build:
+    commands:
+       - export repo=$(basename -s .git $(git config --get remote.origin.url))
+       - export branch=$(git rev-parse --abbrev-ref HEAD)
+       - echo 'Run Mend dependencies scan'
+       - ./mend sca -u -s *//${repo}//${branch} --fail-policy --non-interactive --export-results dep-results.txt
+       - echo 'Start Mend Code Scan'
+       - ./mend sast  --non-interactive -s *//${repo}//${branch}
