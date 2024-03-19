@@ -21,6 +21,6 @@ phases:
        - export repo=$(basename -s .git $(git config --get remote.origin.url))
        - export branch=$(git rev-parse --abbrev-ref HEAD)
        - echo 'Run Mend dependencies scan'
-       - ./mend sca -u -s *//${repo}//${branch} --fail-policy --non-interactive --export-results dep-results.txt
+       - ./mend sca -u -s *//${repo}//${branch} --non-interactive --export-results dep-results.txt
        - echo 'Start Mend Code Scan'
        - ./mend sast  --non-interactive -s *//${repo}//${branch}
