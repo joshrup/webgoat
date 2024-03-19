@@ -5,8 +5,8 @@ env:
   variables:
     MEND_URL: "https://saas.mend.io"
   secrets-manager: # for more information: https://aws.amazon.com/about-aws/whats-new/2019/11/aws-codebuild-adds-support-for-aws-secrets-manager/
-    MEND_EMAIL: "SecretName:Value"
-    MEND_USER_KEY: "SecretName:Value"
+    MEND_EMAIL: "saasmend-joshrup-ci@mend.io"
+    MEND_USER_KEY: "a881046f0c0348e7b6e275a314bb11182a794b7a0a8e46d596ac131836ee4f8f"
 
 
 phases:
@@ -16,7 +16,7 @@ phases:
   build:
     commands:
         # The scan should be called AFTER a package manager build step such as "mvn clean install -DskipTests=true" or "npm install --only=prod"
-       - mvn clean install -DskipTests=true
+       - npm install
   post_build:
     commands:
        - export repo=$(basename -s .git $(git config --get remote.origin.url))
