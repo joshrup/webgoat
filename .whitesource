@@ -1,3 +1,6 @@
 {
-  "settingsInheritedFrom": "JoshRUP/whitesource-config@main"
+  "settingsInheritedFrom": "JoshRUP/whitesource-config@main",
+ "issueSettingsSAST": {
+            "issueType": "finding"
+          }
 }
