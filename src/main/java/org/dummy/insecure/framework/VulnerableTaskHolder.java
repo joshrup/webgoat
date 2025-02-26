@@ -14,7 +14,7 @@ public class VulnerableTaskHolder implements Serializable {
 
   private static final long serialVersionUID = 2;
   private String test;
-  private String test2;
+  private String test3;
   private String taskName;
   private String taskAction;
   private LocalDateTime requestedExecutionTime;
