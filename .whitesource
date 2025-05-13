@@ -54,7 +54,8 @@
       ],
   "lockFileMaintenance": {
      "enabled": true
-   }
+   },
+    "branchPrefix": "test/"
   },
   "imageSettings": {
     "imageTracing": {
