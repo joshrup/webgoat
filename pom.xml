@@ -26,6 +26,12 @@
       <artifactId>spring-context</artifactId>
       <version>${spring.version}</version>
     </dependency>
+      <dependency>
+      <groupId>com.puppycrawl.tools</groupId>
+      <artifactId>checkstyle</artifactId>
+      <version>6.4.1</version>
+      <classifier>all</classifier>
+    </dependency>
   </dependencies>
   
 </project>
